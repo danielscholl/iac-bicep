@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "prefix": {
+      "value": "iac"
+    },
+    "aksVersion": {
+      "value": "1.20.7"
+    },
+    "adminGroupObjectIDs": {
+      "value": [
+        "77cfd4c2-fc3b-482e-a817-f79a199f7722"
+      ]
+    },
+    "adminPublicKey": {
+      "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC997VJjXwdd+WGSER8pj3TAr893BdI/zwTZF1W+vzeYYks8nPtgEnfrXJKWptvl/dBSfEp1DXhb3zz+DodaaTOCqgHzapF8reL6CHUdlqry2xA6i5WP//wQ76SjmklYM1oxTpwpyyOE2qLMJKfOqwfeMLLFoSO4DxJeerWv787ukooosXG2kkQ4xNkrGuWXlL+/o7d6ZUvUYd5avXyfWXJYBaSODQJYZpjHgQB8Pn4yp03W31l3Kmdbc5D8VixgG67spreLLqVmZ9+Hf/Pb6wk8GuUH1NFb9XPwjgvnehMEgetCNDWX+soKaiW1ZvYzsgGtiI+G72ivLa9+aBJnoIz osdu.msft"
+    }
+  }
+}

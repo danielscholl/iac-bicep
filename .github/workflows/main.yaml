@@ -1,0 +1,44 @@
+name: deploy
+
+on:
+  workflow_dispatch:
+
+env:
+  REGION: centralus
+  REGION_PAIR: eastus2
+
+jobs:
+
+  development:
+    name: Development - Manual
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Azure Login
+        uses: Azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Validate Template Resources
+        uses: Azure/cli@1.0.4
+        with:
+          inlineScript: |
+            az deployment sub what-if --location $REGION --template-file $GITHUB_WORKSPACE/main.bicep \
+              --parameter @$GITHUB_WORKSPACE/parameters.json --parameter adminPassword=${{ secrets.VM_PASSWORD }}
+
+      - name: Deploy Template Resources
+        uses: Azure/cli@1.0.4
+        with:
+          inlineScript: |
+            az deployment sub create --location $REGION --template-file $GITHUB_WORKSPACE/templates/main.bicep \
+              --parameter @$GITHUB_WORKSPACE/templates/parameters.json --parameter adminPassword=${{ secrets.VM_PASSWORD }}
+
+      # - name: Flux bootstrap
+      #   run: |
+      #     export GITHUB_TOKEN=${{ secrets.GH_TOKEN }}
+      #     msi="$(az aks show -n ${{ env.CLUSTER_NAME }} -g ${{ env.RESOURCE_GROUP_NAME }} --query identityProfile.kubeletidentity.objectId -o tsv)"
+      #     az keyvault set-policy --name ${{ env.KEYVAULT }} --object-id $msi --secret-permissions get
+      #     curl -s https://toolkit.fluxcd.io/install.sh | bash
+      #     flux bootstrap github --owner=${{ env.GITHUB_OWNER }} --repository=${{ env.REPO }} --branch=main --path=demo-cluster --personal
