@@ -31,8 +31,8 @@ jobs:
         uses: Azure/cli@1.0.4
         with:
           inlineScript: |
-            az deployment sub create --location $AZURE_LOCATION --template-file $GITHUB_WORKSPACE/templates/main.bicep \
-              --parameter @$GITHUB_WORKSPACE/templates/parameters.json --parameter adminPassword=${{ secrets.VM_PASSWORD }}
+            az deployment sub create --location $AZURE_LOCATION --template-file $GITHUB_WORKSPACE/main.bicep \
+              --parameter @$GITHUB_WORKSPACE/parameters.json --parameter adminPassword=${{ secrets.VM_PASSWORD }}
 
       # - name: Flux bootstrap
       #   run: |
