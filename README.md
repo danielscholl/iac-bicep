@@ -17,5 +17,5 @@ cd scripts && ./manual-deploy.sh
 
 # References
 
-https://github.com/paolosalvatori/private-cluster-with-public-dns-zone
-https://github.com/Azure/bicep/tree/main/docs/examples
+- https://github.com/paolosalvatori/private-cluster-with-public-dns-zone
+- https://github.com/Azure/bicep/tree/main/docs/examples
