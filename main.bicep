@@ -1,6 +1,7 @@
 targetScope = 'subscription'
 
 var enableLock = false
+
 param tags object = {
   environment: 'development'
 }

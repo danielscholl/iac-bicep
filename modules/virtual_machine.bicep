@@ -16,6 +16,7 @@ param tags object = {}
 param adminUser string = 'azureuser'
 
 @description('Virtual Machine Password.')
+@secure()
 param adminPassword string
 
 @description('Virtual Machine Subnet.')

@@ -6,6 +6,12 @@
         "no-hardcoded-env-urls": {
           "level": "off"
         },
+        "explicit-values-for-loc-params": {
+          "level": "off"
+        },
+        "no-unnecessary-dependson": {
+          "level": "off"
+        },
         "no-unused-params": {
           "level": "warning"
         },
